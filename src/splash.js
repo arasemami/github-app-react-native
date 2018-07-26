@@ -1,7 +1,7 @@
 import React, {Component } from 'react';
 import { View , Text , StyleSheet , Platform } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-
+import Index from './components/index';
 
 
 
@@ -27,9 +27,7 @@ render(){
 
 
 
-            <View style={styles.container} >
-                    <Text >  wwww to splash screen </Text>   
-            </View>
+    <Index/>
     
     );
 }
