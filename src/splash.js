@@ -28,12 +28,7 @@ render(){
 
 
             <View style={styles.container} >
-                    <Text >  wwww to splash screen </Text>
-                    <Text >  wwww to splash screen </Text>
-                    <Text >  wwww to splash screen </Text>
-                    <Text >  wwww to splash screen </Text>
-                    <Text >  wwww to splash screen </Text>
-                
+                    <Text >  wwww to splash screen </Text>   
             </View>
     
     );
