@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import { View , Text , StyleSheet } from 'react-native';
+import { View , Text , StyleSheet, Image } from 'react-native';
 
 
 
@@ -10,6 +10,7 @@ export default class Index extends Component {
 
         return (
                <View style={styles.container}>
+                <Image source={{uri: 'asset:/app_icon.png'}} style={{width: 40, height: 40}} />
                    <Text>
                        Hello to index page
                    </Text>
