@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity, ScrollView , ActivityIndicator, FlatList } from 'react-native';
+import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity , ActivityIndicator, FlatList } from 'react-native';
 
 
 
@@ -7,16 +7,17 @@ export default class Index extends Component {
 
     constructor(props){
         super(props);
-        this.state ={ isLoading: true}
+        this.state ={ isLoading: true, txtUsername: ''}
+        
       }
     
 
     _onPressButton(){
- 
-    }
-
-    componentDidMount(){
-        return fetch('https://api.github.com/search/users?q=sallar')
+        this.setState({
+            isLoading: true
+            })
+         
+        return fetch('https://api.github.com/search/users?q='+ this.state.txtUsername)
           .then((response) => response.json())
           .then((responseJson) => {
     
@@ -31,6 +32,18 @@ export default class Index extends Component {
           .catch((error) =>{
             console.error(error);
           });
+ 
+
+    }
+
+    componentDidMount(){
+        // console.log(this.state.text)
+        return  (
+            this.setState({
+            isLoading: false
+            })
+
+        )
       }
     
 
@@ -51,32 +64,30 @@ export default class Index extends Component {
                <View style={styles.container}>
                 <Image source={ require('../asset/img/logo.png')} style={{width:100, height:100, marginTop:100}} />
                    <Text style={styles.githubAppText}>
-                      Github App
+                      Github App 
                    </Text>
 
                    <View style={styles.textContainer}>
                        <TextInput
                        style={{height: 40 , width:400, paddingLeft:30}}
                        placeholder="Seach github account . . ."
-                    //    onChangeText={(text) => this.setState({text})}
+                        onChangeText={(text) => this.setState({txtUsername:text})}
+                        value={this.state.txtUsername}
                         />
                    </View>
 
-                    <TouchableOpacity onPress={this._onPressButton} style={styles.searchButton}>
+                    <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.searchButton}>
                         <Text style={{padding:12, textAlign:'center', color:'#000'}}>Search</Text>
                     </TouchableOpacity>
-                    <ScrollView style={styles.ScrollViewContainer}>
-     
-
-                    </ScrollView>
-
+            
                          <FlatList
           data={this.state.dataSource}
+          style={styles.ScrollViewContainer}
           renderItem={({item}) =>  
-   <View style={{flex:1, flexDirection:'row',margin:10}}>
-              <Image  source={{uri: item.avatar_url }} style={{width:70, height:70 , borderRadius:100   }} /> 
-              <Text style={{ fontSize:20}}> {item.login}</Text>
-   </View>
+            <TouchableOpacity style={{flex:1, flexDirection:'row',margin:10 , backgroundColor:'#fff', padding:10, borderRadius:100 }}>
+                        <Image  source={{uri: item.avatar_url }} style={{width:70, height:70 , borderRadius:100   }} /> 
+                        <Text style={{ fontSize:20}}> {item.login}</Text>
+            </TouchableOpacity>
         }
           keyExtractor={(item, index) => index}
         />
@@ -121,7 +132,7 @@ searchButton:{
 ScrollViewContainer:{
     marginTop:10,
     width:600,
-    backgroundColor:'#fff'
+    
 }
 
 })
