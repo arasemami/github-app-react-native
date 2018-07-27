@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity , ActivityIndicator, FlatList } from 'react-native';
+import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity , ActivityIndicator, FlatList, ScrollView  } from 'react-native';
 
 
 
@@ -62,7 +62,8 @@ export default class Index extends Component {
 
         return (
                <View style={styles.container}>
-                <Image source={ require('../asset/img/logo.png')} style={{width:100, height:100, marginTop:100}} />
+               <ScrollView>
+                <Image source={ require('../asset/img/logo.png')} style={{width:100, height:100, marginTop:100, alignSelf:'center'}} />
                    <Text style={styles.githubAppText}>
                       Github App 
                    </Text>
@@ -79,20 +80,26 @@ export default class Index extends Component {
                     <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.searchButton}>
                         <Text style={{padding:12, textAlign:'center', color:'#000'}}>Search</Text>
                     </TouchableOpacity>
-            
+                  
                          <FlatList
           data={this.state.dataSource}
           style={styles.ScrollViewContainer}
           renderItem={({item}) =>  
-            <TouchableOpacity style={{flex:1, flexDirection:'row',margin:10 , backgroundColor:'#fff', padding:10, borderRadius:100 }}>
+
+          
+            <TouchableOpacity style={{flex:1, flexDirection:'row',margin:10 ,justifyContent: 'space-between', backgroundColor:'#85929E', padding:10, borderRadius:100 }}>
                         <Image  source={{uri: item.avatar_url }} style={{width:70, height:70 , borderRadius:100   }} /> 
-                        <Text style={{ fontSize:20}}> {item.login}</Text>
+                        <Text style={{ fontSize:20 , paddingTop:12,textAlign:'left' }}> {item.login}</Text>
+                        <View style={{borderRadius:100, backgroundColor:'#F1C40F'  }}>
+                        <Image source={ require('../asset/img/eye.png')} style={{resizeMode:'center', width:100, height:50, marginTop:10, }} />
+                        </View>
+                        
             </TouchableOpacity>
         }
           keyExtractor={(item, index) => index}
         />
 
-
+</ScrollView>
                </View>
         );
     }
@@ -103,20 +110,23 @@ export default class Index extends Component {
 const styles = StyleSheet.create({
 
 container:{
-    flex:1,
+    flex:2,
     backgroundColor:'#34495E',
     textAlign:'center',
     alignItems: 'center',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    padding:20,
+    justifyContent:'space-between'
 },
 githubAppText:{
 fontSize: 22,
 color:'#ECF0F1',
-fontWeight: 'bold'
+fontWeight: 'bold',
+textAlign:'center'
 
 },
 textContainer:{
-    width:400,
+   
     marginTop: 25,
     backgroundColor:'#fff',
     borderRadius: 5,
@@ -124,14 +134,14 @@ textContainer:{
 },
 searchButton:{
     backgroundColor:'#5DADE2',
-    width:400,
+    
     borderRadius: 5,
     marginTop:10,
     textAlign:'center'
 },
 ScrollViewContainer:{
     marginTop:10,
-    width:600,
+    
     
 }
 
