@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
+import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 
 
@@ -28,8 +28,72 @@ export default class Index extends Component {
                    </View>
 
                     <TouchableOpacity onPress={this._onPressButton} style={styles.searchButton}>
-                        <Text>Search</Text>
+                        <Text style={{padding:12, textAlign:'center', color:'#000'}}>Search</Text>
                     </TouchableOpacity>
+                    <ScrollView style={styles.ScrollViewContainer}>
+
+
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                        <Text>Heloooo</Text>
+                       
+
+                    </ScrollView>
+
+
                </View>
         );
     }
@@ -63,8 +127,13 @@ searchButton:{
     backgroundColor:'#5DADE2',
     width:400,
     borderRadius: 5,
-
-
+    marginTop:10,
+    textAlign:'center'
+},
+ScrollViewContainer:{
+    marginTop:10,
+    width:600,
+    backgroundColor:'#fff'
 }
 
 })
