@@ -1,16 +1,51 @@
 import React , {Component} from 'react';
-import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity, ScrollView , ActivityIndicator, FlatList } from 'react-native';
 
 
 
 export default class Index extends Component {
 
+    constructor(props){
+        super(props);
+        this.state ={ isLoading: true}
+      }
+    
+
     _onPressButton(){
-        console.log("Pressed");
+ 
     }
+
+    componentDidMount(){
+        return fetch('https://api.github.com/search/users?q=sallar')
+          .then((response) => response.json())
+          .then((responseJson) => {
+    
+            this.setState({
+              isLoading: false,
+              dataSource: responseJson.items,
+            }, function(){
+    
+            });
+            console.log(responseJson.items)
+          })
+          .catch((error) =>{
+            console.error(error);
+          });
+      }
+    
 
 
     render(){
+
+        if(this.state.isLoading){
+            return(
+              <View style={{flex: 1, padding: 20}}>
+                <ActivityIndicator/>
+              </View>
+            )
+          }
+
+          
 
         return (
                <View style={styles.container}>
@@ -31,67 +66,20 @@ export default class Index extends Component {
                         <Text style={{padding:12, textAlign:'center', color:'#000'}}>Search</Text>
                     </TouchableOpacity>
                     <ScrollView style={styles.ScrollViewContainer}>
-
-
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                        <Text>Heloooo</Text>
-                       
+     
 
                     </ScrollView>
+
+                         <FlatList
+          data={this.state.dataSource}
+          renderItem={({item}) =>  
+   <View style={{flex:1, flexDirection:'row',margin:10}}>
+              <Image  source={{uri: item.avatar_url }} style={{width:70, height:70 , borderRadius:100   }} /> 
+              <Text style={{ fontSize:20}}> {item.login}</Text>
+   </View>
+        }
+          keyExtractor={(item, index) => index}
+        />
 
 
                </View>
