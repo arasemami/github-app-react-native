@@ -5,6 +5,10 @@ import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity } from 're
 
 export default class Index extends Component {
 
+    _onPressButton(){
+        console.log("Pressed");
+    }
+
 
     render(){
 
