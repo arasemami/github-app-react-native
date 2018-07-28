@@ -63,7 +63,7 @@ export default class Index extends Component {
         return (
                <View style={styles.container}>
                <ScrollView>
-                <Image source={ require('../asset/img/logo.png')} style={{width:100, height:100, marginTop:100, alignSelf:'center'}} />
+                <Image source={ require('../asset/img/logo.png')} style={{width:100, height:100,  alignSelf:'center'}} />
                    <Text style={styles.githubAppText}>
                       Github App 
                    </Text>
@@ -87,11 +87,13 @@ export default class Index extends Component {
           renderItem={({item}) =>  
 
           
-            <TouchableOpacity style={{flex:1, flexDirection:'row',margin:10 ,justifyContent: 'space-between', backgroundColor:'#85929E', padding:10, borderRadius:100 }}>
-                        <Image  source={{uri: item.avatar_url }} style={{width:70, height:70 , borderRadius:100   }} /> 
-                        <Text style={{ fontSize:20 , paddingTop:12,textAlign:'left' }}> {item.login}</Text>
+            <TouchableOpacity style={{flex:1, flexDirection:'row',margin:2 ,justifyContent: 'space-between', backgroundColor:'#85929E', padding:10, borderRadius:100 }}>
+                        <Image  source={{uri: item.avatar_url }} style={{width:50, borderRadius:100   }} /> 
+                        <Text style={{ fontSize:14 , paddingTop:12,textAlign:'left' }}> {item.login}</Text>
                         <View style={{borderRadius:100, backgroundColor:'#F1C40F'  }}>
-                        <Image source={ require('../asset/img/eye.png')} style={{resizeMode:'center', width:100, height:50, marginTop:10, }} />
+                        <View s style={{  width:80, height:40, marginTop:10, }} >
+                        <Text style={{textAlign:'center', fontWeight:'bold'}}>Follow</Text>
+                            </View>
                         </View>
                         
             </TouchableOpacity>
