@@ -7,7 +7,7 @@ import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity , Activity
 
 
 
-export default class Index extends Component {
+class Index extends Component {
 
     constructor(props){
         super(props);
@@ -15,7 +15,9 @@ export default class Index extends Component {
         
       }
     
-
+      _onPressButtonGo(){
+          this.props.navigation.navigate('Details')
+      }
     _onPressButton(){
         this.setState({
             isLoading: true
@@ -83,6 +85,10 @@ export default class Index extends Component {
 
                     <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.searchButton}>
                         <Text style={{padding:12, textAlign:'center', color:'#000'}}>Search</Text>
+                    </TouchableOpacity>
+
+                      <TouchableOpacity onPress={this._onPressButtonGo} style={styles.searchButton}>
+                        <Text style={{padding:12, textAlign:'center', color:'#000'}}>Go </Text>
                     </TouchableOpacity>
                   
                          <FlatList
@@ -152,3 +158,7 @@ ScrollViewContainer:{
 }
 
 })
+
+
+
+export default   Index;
