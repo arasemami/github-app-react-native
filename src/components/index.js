@@ -92,7 +92,7 @@ export default class Index extends Component {
                         <Text style={{ fontSize:14 , paddingTop:12,textAlign:'left' }}> {item.login}</Text>
                         <View style={{borderRadius:100, backgroundColor:'#F1C40F'  }}>
                            <View s style={{  width:80, height:40, marginTop:10, }} >
-                              <Text style={{textAlign:'center', fontWeight:'bold', color:'#000', alignSelf:'center'}}>Follow</Text>
+                              <Text style={{textAlign:'center', fontWeight:'bold', color:'#000', alignSelf:'center', paddingTop:5}}>Follow</Text>
                             </View>
                         </View>
                         
