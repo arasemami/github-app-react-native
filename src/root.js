@@ -5,6 +5,19 @@ import SplashScreen from 'react-native-splash-screen'
 import Splash from './splash';
 
 
+
+
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen,
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+
 class Root extends React.Component {
 
 

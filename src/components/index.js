@@ -3,6 +3,10 @@ import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity , Activity
 
 
 
+
+
+
+
 export default class Index extends Component {
 
     constructor(props){
