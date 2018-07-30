@@ -1,24 +1,26 @@
 import React from 'react'
 import { Platform } from 'react-native'
+import { createStackNavigator } from 'react-navigation' // Version can be specified in package.json
 import SplashScreen from 'react-native-splash-screen'
 
-import Splash from './splash';
 
+import Splash from './splash'
+import DetailsScreen from './components/Details'
 
 
 
 const RootStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Splash: Splash,
     Details: DetailsScreen,
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Splash',
   }
 );
 
 
-class Root extends React.Component {
+export default  class Root extends React.Component {
 
 
   componentDidMount() {
@@ -29,11 +31,13 @@ class Root extends React.Component {
   render() {
     return (
     
-        <Splash />
+       // <Splash />
+
+       <RootStack />
  
 
     )
   }
 }
 
-export default Root
+  
