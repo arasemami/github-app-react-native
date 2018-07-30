@@ -62,7 +62,7 @@ export default class Index extends Component {
 
         return (
                <View style={styles.container}>
-               <ScrollView>
+               <ScrollView style={{ padding:10}}>
                 <Image source={ require('../asset/img/logo.png')} style={{width:100, height:100,  alignSelf:'center'}} />
                    <Text style={styles.githubAppText}>
                       Github App 
@@ -91,8 +91,8 @@ export default class Index extends Component {
                         <Image  source={{uri: item.avatar_url }} style={{width:50, borderRadius:100   }} /> 
                         <Text style={{ fontSize:14 , paddingTop:12,textAlign:'left' }}> {item.login}</Text>
                         <View style={{borderRadius:100, backgroundColor:'#F1C40F'  }}>
-                        <View s style={{  width:80, height:40, marginTop:10, }} >
-                        <Text style={{textAlign:'center', fontWeight:'bold', color:'#000'}}>Follow</Text>
+                           <View s style={{  width:80, height:40, marginTop:10, }} >
+                              <Text style={{textAlign:'center', fontWeight:'bold', color:'#000', alignSelf:'center'}}>Follow</Text>
                             </View>
                         </View>
                         
@@ -117,7 +117,7 @@ container:{
     textAlign:'center',
     alignItems: 'center',
     flexDirection: 'row',
-    padding:20,
+    
     justifyContent:'space-between'
 },
 githubAppText:{
