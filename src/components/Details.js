@@ -8,6 +8,13 @@ class Details extends Component{
         return(
             <View>
                 <Text>Hello Detalils screen</Text>
+                <Text>Hello Detalils screen</Text>
+                <Text>Hello Test</Text>
+                <Text>Hello Detalils screen</Text>
+                <Text>Hello Detalils screen</Text>
+                <Text>Hello Detalils screen</Text>
+                <Text>Hello life uis beufifa</Text>
+
             </View>
         )
     }
