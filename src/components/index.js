@@ -141,9 +141,6 @@ txtSearchBox:{
     borderRadius:50,
     marginTop:10,
     padding:5
-     
-
-
 },
 githubAppText:{
 fontSize: 22,
