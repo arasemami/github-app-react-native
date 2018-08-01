@@ -74,22 +74,27 @@ class Index extends Component {
                       Github App 
                    </Text>
 
-                   <View style={styles.textContainer}>
-                       <TextInput
-                       style={{height: 40 , width:400, paddingLeft:30}}
-                       placeholder="Seach github account . . ."
-                        onChangeText={(text) => this.setState({txtUsername:text})}
-                        value={this.state.txtUsername}
-                        />
+                   <View style={styles.txtSearchBox}>
+                    <View>
+                        <TextInput
+                        style={{height: 40 , width:400, paddingLeft:30, paddingTop:10}}
+                        placeholder="Seach github account . . ."
+                            onChangeText={(text) => this.setState({txtUsername:text})}
+                            value={this.state.txtUsername}
+                            />
+                    </View>
+
+                        <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.searchButton}>
+                            <Text style={{padding:15, textAlign:'center', color:'#000'}}>Search</Text>
+                        </TouchableOpacity>
+
                    </View>
 
-                    <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.searchButton}>
-                        <Text style={{padding:12, textAlign:'center', color:'#000'}}>Search</Text>
-                    </TouchableOpacity>
+        
 
-                      <TouchableOpacity onPress={this._onPressButtonGo} style={styles.searchButton}>
+                      {/* <TouchableOpacity onPress={this._onPressButtonGo} style={styles.searchButton}>
                         <Text style={{padding:12, textAlign:'center', color:'#000'}}>Go </Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                   
                          <FlatList
           data={this.state.dataSource}
@@ -130,6 +135,16 @@ container:{
     
     justifyContent:'space-between'
 },
+txtSearchBox:{
+    flexDirection:'row',
+    backgroundColor:'#fff',
+    borderRadius:50,
+    marginTop:10,
+    padding:5
+     
+
+
+},
 githubAppText:{
 fontSize: 22,
 color:'#ECF0F1',
@@ -137,19 +152,13 @@ fontWeight: 'bold',
 textAlign:'center'
 
 },
-textContainer:{
-   
-    marginTop: 25,
-    backgroundColor:'#fff',
-    borderRadius: 5,
-    padding: 5
-},
+
 searchButton:{
     backgroundColor:'#5DADE2',
+    borderRadius: 100,
+    textAlign:'center',
+    flex:2,
     
-    borderRadius: 5,
-    marginTop:10,
-    textAlign:'center'
 },
 ScrollViewContainer:{
     marginTop:10,

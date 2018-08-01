@@ -9,11 +9,6 @@ class Details extends Component{
             <View>
                 <Text>Hello Detalils screen</Text>
                 <Text>Hello Detalils screen</Text>
-                <Text>Hello Test</Text>
-                <Text>Hello Detalils screen</Text>
-                <Text>Hello Detalils screen</Text>
-                <Text>Hello Detalils screen</Text>
-                <Text>Hello life uis beufifa</Text>
 
             </View>
         )
