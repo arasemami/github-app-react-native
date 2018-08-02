@@ -10,13 +10,18 @@ import DetailsScreen from './components/Details'
 
 
 const RootStack = createStackNavigator(
+  
   {
     Splash: Splash,
     Details: DetailsScreen,
   },
   {
     initialRouteName: 'Splash',
-  }
+    headerMode: 'none',
+  },
+   
+
+  
 );
 
 

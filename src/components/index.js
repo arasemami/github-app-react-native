@@ -1,5 +1,6 @@
 import React , {Component} from 'react';
 import { View , Text , StyleSheet, Image, TextInput, TouchableOpacity , ActivityIndicator, FlatList, ScrollView  } from 'react-native';
+import { Container, Header, Title, Content, Left, Button , Icon , Body , Right  } from 'native-base';
 
 
 
@@ -67,29 +68,50 @@ class Index extends Component {
           
 
         return (
+            <Container>
+
+                        <Header>
+                            <Left>
+                                <Button transparent>
+                                <Icon name='menu' />
+                                </Button>
+                            </Left>
+                            <Body>
+                                <Title>Github...</Title>
+                            </Body>
+                            <Right />
+                        </Header>
+
+                            
+
+                
                <View style={styles.container}>
+
+        
+
+
                <ScrollView style={{ padding:10}}>
-                <Image source={ require('../asset/img/logo.png')} style={{width:100, height:100,  alignSelf:'center'}} />
+             
+               <Image source={ require('../asset/img/logo.png')} style={{width:100, height:100,  alignSelf:'center'}} />
                    <Text style={styles.githubAppText}>
                       Github App 
                    </Text>
 
                    <View style={styles.txtSearchBox}>
-                    <View>
+              
                         <TextInput
-                        style={{height: 40 , width:400, paddingLeft:30, paddingTop:10}}
+                        style={{height: 40 , paddingLeft:30 ,flex:2, borderRadius:50, paddingTop:10, backgroundColor:'#fff'}}
                         placeholder="Seach github account . . ."
                             onChangeText={(text) => this.setState({txtUsername:text})}
                             value={this.state.txtUsername}
                             />
-                    </View>
+                 
 
                         <TouchableOpacity onPress={this._onPressButton.bind(this)} style={styles.searchButton}>
                             <Text style={{padding:15, textAlign:'center', color:'#000'}}>Search</Text>
                         </TouchableOpacity>
 
                    </View>
-
         
 
                       {/* <TouchableOpacity onPress={this._onPressButtonGo} style={styles.searchButton}>
@@ -118,6 +140,10 @@ class Index extends Component {
 
 </ScrollView>
                </View>
+              
+
+                     </Container>
+
         );
     }
 }
@@ -136,7 +162,9 @@ container:{
     justifyContent:'space-between'
 },
 txtSearchBox:{
+    flex:1,
     flexDirection:'row',
+    justifyContent: 'center',
     backgroundColor:'#fff',
     borderRadius:50,
     marginTop:10,
@@ -154,7 +182,7 @@ searchButton:{
     backgroundColor:'#5DADE2',
     borderRadius: 100,
     textAlign:'center',
-    flex:2,
+    
     
 },
 ScrollViewContainer:{
