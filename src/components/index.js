@@ -16,8 +16,10 @@ class Index extends Component {
         
       }
     
-      _onPressButtonGo(){
-          this.props.navigation.navigate('Details')
+      _onPressButtonViewProfile(){
+         // this.props.navigation.navigate('Details')
+
+         alert("View Profile")
       }
     _onPressButton(){
         this.setState({
@@ -83,8 +85,6 @@ class Index extends Component {
                         </Header>
 
                             
-
-                
                <View style={styles.container}>
 
         
@@ -119,24 +119,24 @@ class Index extends Component {
                     </TouchableOpacity> */}
                   
                          <FlatList
-          data={this.state.dataSource}
-          style={styles.flatViewContainer}
-          renderItem={({item}) =>  
+                            data={this.state.dataSource}
+                            style={styles.flatViewContainer}
+                            renderItem={({item}) =>  
 
           
-            <TouchableOpacity style={{flex:1, flexDirection:'row',margin:2 ,justifyContent: 'space-between', backgroundColor:'#85929E', padding:10, borderRadius:100 }}>
-                        <Image  source={{uri: item.avatar_url }} style={{width:50, borderRadius:100   }} /> 
-                        <Text style={{ fontSize:14 , paddingTop:12,textAlign:'left' }}> {item.login}</Text>
-                        <View style={{borderRadius:100, backgroundColor:'#F1C40F'  }}>
-                           <View s style={{  width:80, height:40, marginTop:10, }} >
-                              <Text style={{textAlign:'center', fontWeight:'bold', color:'#000', alignSelf:'center', paddingTop:5}}>Follow</Text>
-                            </View>
-                        </View>
-                        
-            </TouchableOpacity>
-        }
-          keyExtractor={(item, index) => index}
-        />
+                            <TouchableOpacity onPress={this._onPressButtonViewProfile.bind(this)} style={{flex:1, flexDirection:'row',margin:2 ,justifyContent: 'space-between', backgroundColor:'#85929E', padding:10, borderRadius:100 }}>
+                                        <Image  source={{uri: item.avatar_url }} style={{width:50, borderRadius:100   }} /> 
+                                        <Text style={{ fontSize:14 , paddingTop:12,textAlign:'left' }}> {item.login}</Text>
+                                        <View style={{borderRadius:100, backgroundColor:'#F1C40F'  }}>
+                                        <View s style={{  width:80, height:40, marginTop:10, }} >
+                                            <Text style={{textAlign:'center', fontWeight:'bold', color:'#000', alignSelf:'center', paddingTop:5}}>Follow</Text>
+                                            </View>
+                                        </View>
+                                        
+                            </TouchableOpacity>
+                                        }
+                                        keyExtractor={(item, index) => index}
+                        />
 
 </ScrollView>
                </View>
