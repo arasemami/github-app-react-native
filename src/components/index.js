@@ -100,7 +100,7 @@ class Index extends Component {
                    <View style={styles.txtSearchBox}>
               
                         <TextInput
-                        style={{height: 40 , paddingLeft:30 ,flex:2, borderRadius:50, paddingTop:10, backgroundColor:'#fff'}}
+                        style={{height: 40 , paddingLeft:30 ,flex:2, borderRadius:50, paddingTop:14, backgroundColor:'#fff'}}
                         placeholder="Seach github account . . ."
                             onChangeText={(text) => this.setState({txtUsername:text})}
                             value={this.state.txtUsername}
@@ -120,7 +120,7 @@ class Index extends Component {
                   
                          <FlatList
           data={this.state.dataSource}
-          style={styles.ScrollViewContainer}
+          style={styles.flatViewContainer}
           renderItem={({item}) =>  
 
           
@@ -158,14 +158,11 @@ container:{
     textAlign:'center',
     alignItems: 'center',
     flexDirection: 'row',
-    
-    justifyContent:'space-between'
 },
 txtSearchBox:{
-    flex:1,
+    backgroundColor:'#fff',
     flexDirection:'row',
     justifyContent: 'center',
-    backgroundColor:'#fff',
     borderRadius:50,
     marginTop:10,
     padding:5
@@ -182,11 +179,14 @@ searchButton:{
     backgroundColor:'#5DADE2',
     borderRadius: 100,
     textAlign:'center',
+    justifyContent: 'center',
     
     
 },
-ScrollViewContainer:{
+flatViewContainer:{
     marginTop:10,
+    flex:3
+
     
     
 }
