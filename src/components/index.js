@@ -133,7 +133,7 @@ class Index extends Component {
                             renderItem={({item}) =>
 
 
-                                <TouchableOpacity onPress={() => navigate('Details')} style={{
+                                <TouchableOpacity onPress={() => navigate('Details', { nameUser: 'Brent' })} style={{
                                     flex: 1,
                                     flexDirection: 'row',
                                     margin: 2,
