@@ -1,23 +1,23 @@
-import React from 'react'
-import { Platform } from 'react-native'
-import { createStackNavigator } from 'react-navigation' // Version can be specified in package.json
-import SplashScreen from 'react-native-splash-screen'
+import React from 'react';
+import { Platform } from 'react-native';
+import { createStackNavigator  } from "react-navigation"; // Version can be specified in package.json
+import SplashScreen from 'react-native-splash-screen';
 
 
-import Splash from './splash'
+import SplashScreen2 from './splash'
+import IndexScreen from './components/index'
 import DetailsScreen from './components/Details'
 
 
 
-const RootStack = createStackNavigator(
-  
-  {
-    Splash: Splash,
-    Details: DetailsScreen,
+const RootStack = createStackNavigator({
+    Splash: {screen: SplashScreen2},
+    Index: {screen: IndexScreen},
+    Details: {screen: DetailsScreen},
   },
   {
-    initialRouteName: 'Splash',
-    headerMode: 'none',
+    initialRouteName: 'Index',
+    // headerMode: 'none',
   },
    
 
