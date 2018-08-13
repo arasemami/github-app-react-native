@@ -57,6 +57,16 @@ class Index extends Component {
         )
     }
 
+    _setTitle = (titleText) => {
+        console.log('Setting title text');
+
+        const {setParams} = this.props.navigation;
+        // FIXME: This cause a nasty recursion
+        setParams({title: titleText});
+    }
+
+
+
 
     render() {
 
