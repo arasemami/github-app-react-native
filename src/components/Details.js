@@ -6,9 +6,14 @@ import {Container, Header, Left, Body, Right, Button, Icon, Title} from 'native-
 
 class Details extends Component {
 
+    constructor(props){
+        super(props);
+
+    }
+
     render() { 
         const {navigation} = this.props;
-        const username = navigation.getParam('userName');
+        let {username} = navigation.getParam('userName');
             console.log(username);
 
         return (
@@ -20,7 +25,7 @@ class Details extends Component {
                         </Button>
                     </Left>
                     <Body>
-                    <Title>  </Title>
+                    <Title>{navigation.getParam('userName')} </Title>
                     </Body>
                     <Right>
                         <Button transparent>
