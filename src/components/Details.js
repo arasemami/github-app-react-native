@@ -3,20 +3,24 @@ import {Container, Header, Left, Body, Right, Button, Icon, Title} from 'native-
 
 
 
+
 class Details extends Component {
 
-    render() {
-        const { goBack } = this.props.navigation;
+    render() { 
+        const {navigation} = this.props;
+        const username = navigation.getParam('userName');
+            console.log(username);
+
         return (
             <Container>
                 <Header>
                     <Left>
-                        <Button transparent  onPress={() => goBack()}  >
+                        <Button transparent  onPress={() => navigation.goBack()}  >
                             <Icon name='arrow-back'/>
                         </Button>
                     </Left>
                     <Body>
-                    <Title>{this.props.navigation.nameUser}</Title>
+                    <Title>  </Title>
                     </Body>
                     <Right>
                         <Button transparent>

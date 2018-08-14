@@ -57,14 +57,12 @@ class Index extends Component {
         )
     }
 
-    _setTitle = (titleText) => {
-        console.log('Setting title text');
+ 
+    _openViewPage(user){
+        
+        this.props.navigation.navigate('Details', {userName:user});
 
-        const {setParams} = this.props.navigation;
-        // FIXME: This cause a nasty recursion
-        setParams({title: titleText});
     }
-
 
 
 
@@ -143,7 +141,7 @@ class Index extends Component {
                             renderItem={({item}) =>
 
 
-                                <TouchableOpacity onPress={() => navigate('Details', { nameUser: 'Brent' })} style={{
+                                <TouchableOpacity onPress={ () => this._openViewPage(item.login)} style={{
                                     flex: 1,
                                     flexDirection: 'row',
                                     margin: 2,

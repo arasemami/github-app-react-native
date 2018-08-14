@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator  } from "react-navigation"; // Version can be specified in package.json
 import SplashScreen from 'react-native-splash-screen';
+ 
 
 
 import SplashScreen2 from './splash'
@@ -11,13 +12,14 @@ import DetailsScreen from './components/Details'
 
 
 const RootStack = createStackNavigator({
-    Splash: {screen: SplashScreen2},
+    Splash: {screen: SplashScreen2 },
     Index: {screen: IndexScreen},
     Details: {screen: DetailsScreen},
   },
   {
     initialRouteName: 'Index',
-      headerMode: 'none',
+      // headerMode: 'none',
+
   },
    
 
