@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {Container, Header, Left, Body, Right, Button, Icon, Title} from 'native-base';
+import { StyleSheet  } from "react-native";
+import {Container, Header, Left, Body, Right, Button, Icon, Title 
+    , Card, CardItem, Text , Thumbnail, Content  } from 'native-base';
 
 
 
@@ -12,13 +14,14 @@ class Details extends Component {
     }
 
     render() { 
+        const uri = "https://facebook.github.io/react-native/docs/assets/favicon.png";
         const {navigation} = this.props;
         let {username} = navigation.getParam('userName');
             console.log(username);
 
         return (
             <Container>
-                <Header>
+                <Header style={styles.headerStyle}>
                     <Left>
                         <Button transparent  onPress={() => navigation.goBack()}  >
                             <Icon name='arrow-back'/>
@@ -39,9 +42,32 @@ class Details extends Component {
                         </Button>
                     </Right>
                 </Header>
+
+      
+     
+            
+
+
             </Container>
         );
     }
 }
 
 export default Details;
+
+
+const styles = StyleSheet.create({
+
+    headerStyle:{
+        backgroundColor: '#34495E',
+
+    },
+    infoStyle:{
+        textAlign: 'center',
+        
+        // flex:1,
+        // flexDirection: 'row',
+
+
+    }
+})

@@ -18,7 +18,7 @@ const RootStack = createStackNavigator({
   },
   {
     initialRouteName: 'Index',
-      // headerMode: 'none',
+    headerMode: 'none',
 
   },
    
