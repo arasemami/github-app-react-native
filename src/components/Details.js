@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { View,StyleSheet , ScrollView  } from "react-native";
+import { View,StyleSheet , ScrollView, FlatList  } from "react-native";
 import {Container, Header, Left, Body, Right, Button, Icon, Title 
     , Card, CardItem, Text , Thumbnail, Content, List, ListItem  } from 'native-base';
+
 
 
 
@@ -10,7 +11,7 @@ class Details extends Component {
 
     constructor(props){
         super(props);
-        this.state = {userId: 'arasemami' };
+        this.state = {bio: '' };
     }
 
 
@@ -22,12 +23,37 @@ class Details extends Component {
 
                 this.setState({
                     isLoading: false,
-                    data: responseJson,
+                    bio: responseJson.bio
                 }, function () {
 
                 });
                 // TODO Delete latter
-                console.log(this.state.data.bio)
+             //  console.log(this.state.bio)
+
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+
+    }
+
+    _getRepositories(ID) {
+        this.setState({
+            isLoading: true
+        })
+
+        return fetch('https://api.github.com/users/' + ID + '/repos')
+            .then((response) => response.json())
+            .then((responseJson) => {
+
+                this.setState({
+                    isLoading: false,
+                    dataRepo: responseJson,
+                }, function () {
+
+                });
+                console.log( responseJson)
             })
             .catch((error) => {
                 console.error(error);
@@ -37,19 +63,19 @@ class Details extends Component {
     }
 
     componentWillMount(){
-       // console.log("user name is:" + this.state.userId);
-        this._onPressButton(this.state.userId);
+        const {navigation} = this.props;
+       // console.log("user name is:" + navigation.getParam('userName'));
+        this._onPressButton(navigation.getParam('userName'));
+        this._getRepositories(navigation.getParam('userName'));
 
     }
 
-    render() { 
 
+
+    render() {
         const {navigation} = this.props;
-        const  infoItem =  this.state.dataSource;
         const uri = navigation.getParam('avatar');
-       // console.log(navigation.getParam('userName'));
-        console.log("info" + infoItem);
-
+        const uriIcon = 'https://cdn1.iconfinder.com/data/icons/flat-business-icons/128/folder-512.png';
 
 
 
@@ -77,32 +103,39 @@ class Details extends Component {
                         </Button>
                     </Right>
                 </Header>
+
                 <ScrollView>
-                    <View style={styles.thumbnailStyle}>
 
-                                <Thumbnail   style={styles.thumbnailIMG}   source={{uri: uri }} />
-                                <Text style={styles.H1} >{navigation.getParam('userName')}</Text>
-                                <Text style={styles.H2} >Front end ss  |  000</Text>
+                        <View style={styles.thumbnailStyle}>
+                                <Thumbnail style={styles.thumbnailIMG}   source={{uri: uri }} />
+                                <Text      style={styles.H1} >{navigation.getParam('userName')}</Text>
+                                <Text      style={styles.H2} >{this.state.bio}</Text>
+                        </View>
 
+                    <FlatList
+                        data={this.state.dataRepo}
+                        style={styles.flatViewContainer}
+                        renderItem={({item}) =>
 
-
-
-                    </View>
 
                         <List>
                             <ListItem avatar>
                                 <Left>
-                                    <Thumbnail source={{ uri: uri }} />
+                                    <Thumbnail source={{ uri: uriIcon }} />
                                 </Left>
                                 <Body>
-                                <Text>Kumar Pratik</Text>
-                                <Text note>Doing what you like will always keep you happy . .</Text>
+                                <Text>{item.name}</Text>
+                                <Text note>{item.description}</Text>
                                 </Body>
                                 <Right>
-                                    <Text note>3:43 pm</Text>
+                                    <Text note>{item.stargazers_count}</Text>
                                 </Right>
                             </ListItem>
                         </List>
+
+                        }
+                        keyExtractor={(item, index) => index}
+                    />
 
                 </ScrollView>
 
@@ -149,5 +182,11 @@ const styles = StyleSheet.create({
     H2:{
         fontSize:14,
         color:'#666',
+    },
+    flatViewContainer: {
+        marginTop: 10,
+        flex: 3
+
+
     }
 })
