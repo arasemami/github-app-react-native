@@ -38,7 +38,7 @@ class Index extends Component {
                 }, function () {
 
                 });
-                console.log(responseJson.items)
+                console.log( responseJson.items)
             })
             .catch((error) => {
                 console.error(error);
@@ -59,8 +59,8 @@ class Index extends Component {
 
  
     _openViewPage(user){
-        
-        this.props.navigation.navigate('Details', {userName:user});
+        console.log(user);
+        this.props.navigation.navigate('Details', {userName:user.login, avatar:user.avatar_url});
 
     }
 
@@ -140,8 +140,7 @@ class Index extends Component {
                             style={styles.flatViewContainer}
                             renderItem={({item}) =>
 
-
-                                <TouchableOpacity onPress={ () => this._openViewPage(item.login)} style={{
+                                <TouchableOpacity onPress={ () => this._openViewPage(item)} style={{
                                     flex: 1,
                                     flexDirection: 'row',
                                     margin: 2,
