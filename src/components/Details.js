@@ -71,6 +71,26 @@ class Details extends Component {
     }
 
 
+    _getDescriptopn(s)
+{
+    // This says "If string s is less than 10 characters, return s.
+    // Otherwise, return the first 10 characters of s."
+    if (s === null  )
+    {
+        return("No description and details.\n...");
+    }
+    else {
+        console.log(s);
+        return(s.substring(0,50));
+
+    }
+
+
+    // if (s.length != '')
+    // return (s.length < 10) ? s : s.substring(0, 10);
+    // else return "No description";
+}
+
 
     render() {
         const {navigation} = this.props;
@@ -125,7 +145,7 @@ class Details extends Component {
                                 </Left>
                                 <Body>
                                 <Text>{item.name}</Text>
-                                <Text note>{item.description}</Text>
+                                <Text note>{ this._getDescriptopn(item.description)}</Text>
                                 </Body>
                                 <Right>
                                     <Text note>{item.stargazers_count}</Text>
