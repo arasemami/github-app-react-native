@@ -128,9 +128,9 @@ class Details extends Component {
                         <View style={styles.thumbnailStyle}>
                                 <Thumbnail style={styles.thumbnailIMG}   source={{uri: uri }} />
                                 <Text      style={styles.H1} >{userData.name}</Text>
-                                <Text      style={styles.H2} >work at {userData.company}</Text>
+                                <Text      style={styles.H2} >{userData.company}</Text>
                                 <Text      style={styles.H2} >{userData.bio}</Text>
-                                <Text      style={styles.H3} >{userData.blog} | {userData.email} | {userData.location}</Text>
+                                <Text      style={styles.H3} >{userData.blog}   {userData.email}    {userData.location}</Text>
                                 <Text      style={styles.H3} >following {userData.following} | followers {userData.followers} | Reposotori {userData.public_repos}</Text>
                
                         </View>
