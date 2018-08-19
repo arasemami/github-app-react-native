@@ -1,3 +1,9 @@
+//
+//
+// 
+//
+//
+
 import React, {Component} from 'react';
 import { View,StyleSheet , ScrollView, FlatList  } from "react-native";
 import {Container, Header, Left, Body, Right, Button, Icon, Title 
@@ -11,7 +17,7 @@ class Details extends Component {
 
     constructor(props){
         super(props);
-        this.state = {bio: '' };
+        this.state = { dataUser:'' };
     }
 
 
@@ -23,7 +29,7 @@ class Details extends Component {
 
                 this.setState({
                     isLoading: false,
-                    bio: responseJson.bio
+                    dataUser: responseJson
                 }, function () {
 
                 });
@@ -73,30 +79,23 @@ class Details extends Component {
 
     _getDescriptopn(s)
 {
-    // This says "If string s is less than 10 characters, return s.
-    // Otherwise, return the first 10 characters of s."
+    /* Chechking if description is empty or null fill somethign and if 
+       description is biger the 30 char just get first 30 char. */
+
     if (s === null  )
-    {
-        return("No description and details.\n...");
-    }
-    else {
-        console.log(s);
-        return(s.substring(0,50));
+        { return("No description and details.\n..."); }
+    else
+        { return(s.substring(0,50)); }
 
-    }
-
-
-    // if (s.length != '')
-    // return (s.length < 10) ? s : s.substring(0, 10);
-    // else return "No description";
 }
 
 
     render() {
         const {navigation} = this.props;
         const uri = navigation.getParam('avatar');
-        const uriIcon = 'https://cdn1.iconfinder.com/data/icons/flat-business-icons/128/folder-512.png';
-
+        const uriIcon = 'https://cdn1.iconfinder.com/data/icons/flat-business-icons/128/folder-512.png'; // defualt image for reposotori 
+        let userData = this.state.dataUser;  // Get user info like bio , user name , web site 
+        console.log(userData);
 
 
         return (
@@ -128,8 +127,12 @@ class Details extends Component {
 
                         <View style={styles.thumbnailStyle}>
                                 <Thumbnail style={styles.thumbnailIMG}   source={{uri: uri }} />
-                                <Text      style={styles.H1} >{navigation.getParam('userName')}</Text>
-                                <Text      style={styles.H2} >{this.state.bio}</Text>
+                                <Text      style={styles.H1} >{userData.name}</Text>
+                                <Text      style={styles.H2} >work at {userData.company}</Text>
+                                <Text      style={styles.H2} >{userData.bio}</Text>
+                                <Text      style={styles.H3} >{userData.blog} | {userData.email} | {userData.location}</Text>
+                                <Text      style={styles.H3} >following {userData.following} | followers {userData.followers} | Reposotori {userData.public_repos}</Text>
+               
                         </View>
 
                     <FlatList
@@ -144,11 +147,11 @@ class Details extends Component {
                                     <Thumbnail source={{ uri: uriIcon }} />
                                 </Left>
                                 <Body>
-                                <Text>{item.name}</Text>
+                                <Text>{item.name.toUpperCase()}</Text>
                                 <Text note>{ this._getDescriptopn(item.description)}</Text>
                                 </Body>
                                 <Right>
-                                    <Text note>{item.stargazers_count}</Text>
+                                    <Text note>{item.pushed_at.slice(0,10)}</Text>
                                 </Right>
                             </ListItem>
                         </List>
@@ -202,6 +205,10 @@ const styles = StyleSheet.create({
     H2:{
         fontSize:14,
         color:'#666',
+    },
+    H3:{
+        fontSize:12,
+        color:'#555',
     },
     flatViewContainer: {
         marginTop: 10,

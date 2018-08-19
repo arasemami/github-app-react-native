@@ -118,7 +118,7 @@ class Index extends Component {
                                     paddingTop: 14,
                                     backgroundColor: '#fff'
                                 }}
-                                placeholder="Seach github account . . ."
+                                placeholder="Search github account . . ."
                                 onChangeText={(text) => this.setState({txtUsername: text})}
                                 value={this.state.txtUsername}
                             />
