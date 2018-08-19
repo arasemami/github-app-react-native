@@ -5,7 +5,7 @@
 //
 
 import React, {Component} from 'react';
-import { View,StyleSheet , ScrollView, FlatList  } from "react-native";
+import { View,StyleSheet , ScrollView, FlatList , TouchableOpacity  } from "react-native";
 import {Container, Header, Left, Body, Right, Button, Icon, Title 
     , Card, CardItem, Text , Thumbnail, Content, List, ListItem  } from 'native-base';
 
@@ -85,8 +85,12 @@ class Details extends Component {
     if (s === null  )
         { return("No description and details.\n..."); }
     else
-        { return(s.substring(0,50)); }
+        { return(s.substring(0,100)); }
 
+}
+
+_openViewPage(){
+    alert("sss");
 }
 
 
@@ -131,8 +135,7 @@ class Details extends Component {
                                 <Text      style={styles.H2} >{userData.company}</Text>
                                 <Text      style={styles.H2} >{userData.bio}</Text>
                                 <Text      style={styles.H3} >{userData.blog}   {userData.email}    {userData.location}</Text>
-                                <Text      style={styles.H3} >following {userData.following} | followers {userData.followers} | Reposotori {userData.public_repos}</Text>
-               
+                                <Text      style={styles.H3} >Following {userData.following} | Followers {userData.followers} | Repositories {userData.public_repos}</Text>
                         </View>
 
                     <FlatList
@@ -140,21 +143,31 @@ class Details extends Component {
                         style={styles.flatViewContainer}
                         renderItem={({item}) =>
 
+                        <TouchableOpacity onPress={ () => this._openViewPage()} style={{
+                             
+                            margin: 2, 
+                            padding: 10, 
+                        }}>
 
                         <List>
                             <ListItem avatar>
-                                <Left>
-                                    <Thumbnail source={{ uri: uriIcon }} />
+                                <Left >
+                                    <Thumbnail source={{ uri: uriIcon }}  />
                                 </Left>
                                 <Body>
                                 <Text>{item.name.toUpperCase()}</Text>
                                 <Text note>{ this._getDescriptopn(item.description)}</Text>
+                                <Text note>Pushed at : {item.pushed_at.slice(0,10)}</Text>
                                 </Body>
                                 <Right>
-                                    <Text note>{item.pushed_at.slice(0,10)}</Text>
+                                    {/* <Text note>{item.pushed_at.slice(0,10)}</Text> */}
+                                    <Button rounded info onPress={ () => this._openViewPage()}>
+                                        <Text>See more</Text>
+                                    </Button>
                                 </Right>
                             </ListItem>
                         </List>
+                        </TouchableOpacity>
 
                         }
                         keyExtractor={(item, index) => index}
