@@ -90,7 +90,9 @@ class Details extends Component {
 }
 
 _openViewPage(){
-    alert("sss");
+   
+    //this.props.navigation.navigate('Details', {userName:user.login, avatar:user.avatar_url});
+    this.props.navigation.navigate('Repo');
 }
 
 
@@ -135,7 +137,7 @@ _openViewPage(){
                                 <Text      style={styles.H2} >{userData.company}</Text>
                                 <Text      style={styles.H2} >{userData.bio}</Text>
                                 <Text      style={styles.H3} >{userData.blog}   {userData.email}    {userData.location}</Text>
-                                <Text      style={styles.H3} >Following {userData.following} | Followers {userData.followers} | Repositories {userData.public_repos}</Text>
+                                <Text      style={styles.H4} >Following {userData.following} | Followers {userData.followers} | Repositories {userData.public_repos}</Text>
                         </View>
 
                     <FlatList
@@ -143,11 +145,7 @@ _openViewPage(){
                         style={styles.flatViewContainer}
                         renderItem={({item}) =>
 
-                        <TouchableOpacity onPress={ () => this._openViewPage()} style={{
-                             
-                            margin: 2, 
-                            padding: 10, 
-                        }}>
+                        <TouchableOpacity onPress={ () => this._openViewPage()} >
 
                         <List>
                             <ListItem avatar>
@@ -217,9 +215,13 @@ const styles = StyleSheet.create({
     },
     H2:{
         fontSize:14,
-        color:'#666',
+        color:'#777',
     },
     H3:{
+        fontSize:12,
+        color:'#666',
+    },
+    H4:{
         fontSize:12,
         color:'#555',
     },
