@@ -155,14 +155,14 @@ _openViewPage(){
                                     <Thumbnail source={{ uri: uriIcon }}  />
                                 </Left>
                                 <Body>
-                                <Text>{item.name.toUpperCase()}</Text>
+                                <Text>{item.name.toUpperCase().slice(0,50)}</Text>
                                 <Text note>{ this._getDescriptopn(item.description)}</Text>
                                 <Text note>Pushed at : {item.pushed_at.slice(0,10)}</Text>
                                 </Body>
                                 <Right>
                                     {/* <Text note>{item.pushed_at.slice(0,10)}</Text> */}
                                     <Button rounded info onPress={ () => this._openViewPage()}>
-                                        <Text>See more</Text>
+                                       <Icon name='ios-arrow-forward'/>
                                     </Button>
                                 </Right>
                             </ListItem>
