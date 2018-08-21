@@ -17,7 +17,7 @@ class Details extends Component {
 
     constructor(props){
         super(props);
-        this.state = { dataUser:'' };
+        this.state = { dataUser:'', baseURL:'https://api.github.com/' };
     }
 
 
@@ -49,7 +49,7 @@ class Details extends Component {
             isLoading: true
         })
 
-        return fetch('https://api.github.com/users/' + ID + '/repos')
+        return fetch(this.state.baseURL + 'users/' + ID + '/repos')
             .then((response) => response.json())
             .then((responseJson) => {
 

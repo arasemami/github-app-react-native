@@ -17,7 +17,7 @@ class Index extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {isLoading: true, txtUsername: ''};
+        this.state = {isLoading: true, txtUsername: '' , baseURL:'https://api.github.com/'};
 
 
     }
@@ -28,7 +28,7 @@ class Index extends Component {
             isLoading: true
         })
 
-        return fetch('https://api.github.com/search/users?q=' + this.state.txtUsername)
+        return fetch(this.state.baseURL + 'search/users?q=' + this.state.txtUsername)
             .then((response) => response.json())
             .then((responseJson) => {
 
