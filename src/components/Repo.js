@@ -20,8 +20,8 @@ class Repo extends Component{
                             </Button>
                         </Left>
                         <Body>
-                            {/*{navigation.getParam('userName')}*/}
-                            <Title>Repo</Title>
+                            
+                            <Title> {navigation.getParam('repoName')} </Title> 
                         </Body>
                         <Right>
                             <Button transparent>

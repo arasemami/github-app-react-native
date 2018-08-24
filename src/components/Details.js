@@ -92,7 +92,7 @@ class Details extends Component {
 _openViewPage(){
    
     //this.props.navigation.navigate('Details', {userName:user.login, avatar:user.avatar_url});
-    this.props.navigation.navigate('Repo');
+    this.props.navigation.navigate('Repo', {repoName:'Repo Name'});
 }
 
 
