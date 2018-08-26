@@ -30,9 +30,7 @@ class Repo extends Component{
                             <Button transparent>
                                 <Icon name='heart'/>
                             </Button>
-                            <Button transparent>
-                                <Icon name='more'/>
-                            </Button>
+                         
                         </Right>
                 </Header>
             </Container>
